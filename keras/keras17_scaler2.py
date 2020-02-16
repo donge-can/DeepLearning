@@ -1,4 +1,5 @@
 from numpy import array
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 from sklearn.model_selection import train_test_split
@@ -30,12 +31,12 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.75, rando
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.preprocessing import RobustScaler, MaxAbsScaler
 
-scaler = StandardScaler()
+scaler = MinMaxScaler()
 scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 
-print(x_train)
+print(np.mean(x_train), np.std(x_train))
 
 
 # LSTM 을 위한 3차원 변경
